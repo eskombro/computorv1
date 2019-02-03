@@ -64,7 +64,7 @@ def get_balanced_str(elem_list):
 	str_balanced = ""
 	for i in range(0, 3):
 		if (elem_list[i]):
-			if (i != 0 and elem_list[i] > 0.0):
+			if (i != 0 and elem_list[i] > 0.0 and elem_list[i - 1] != 0.0):
 				str_balanced += "+ "
 			if (elem_list[i] % 1 != 0):
 				str_balanced += str(elem_list[i])
@@ -75,3 +75,30 @@ def get_balanced_str(elem_list):
 		str_balanced += "0 "
 	str_balanced += "= 0"
 	return (str_balanced)
+
+def handle_human_format(s):
+	i = 0
+	while (i < len(s)):
+		if (s[i] == 'X'):
+			if (i == 0 or s[i - 1] != '*'):
+				s = s[0 : i] + "1*" + s[i : len(s)]
+				i = -1
+			elif (i == len(s) - 1 or s[i + 1] != '^'):
+				s = s[0 : i + 1] + "^1" + s[i + 1: len(s)]
+				i = -1
+		elif ("0123456789".find(s[i]) != -1):
+			prev = False
+			next = False
+			if (i == 0 or "+-=".find(s[i - 1]) != -1):
+				prev = True
+				while (i < len(s) - 1 and "0123456789".find(s[i]) != -1):
+					i += 1
+				if (i == len(s) or s[i] != '*'):
+					if (i != len(s) - 1):
+						i -= 1
+					next = True
+				if (prev and next):
+					s = s[0 : i + 1] + "*X^0" + s[i + 1 : len(s)]
+					i = -1
+		i += 1
+	return (s)

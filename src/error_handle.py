@@ -8,7 +8,7 @@ def epur_str(s):
 	return (s)
 
 def check_wrong_chars(s):
-	ok_chars = "Xx+-*/=0123456789^. "
+	ok_chars = "X+-*/=0123456789^. "
 	for i in range(0, len(s)):
 		if (ok_chars.find(s[i]) == -1):
 			return (1)

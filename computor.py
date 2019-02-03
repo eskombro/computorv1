@@ -1,11 +1,12 @@
 import sys
 from src.error_handle import test_errors, exit_error
-from src.parse_params import balance_equation, get_balanced_str
+from src.parse_params import balance_equation, get_balanced_str, handle_human_format
 from src.solve import get_solution_nbr, solve_deg1, solve_deg2, get_eq_degree
 
 elem_list = []
 
 s = test_errors(sys.argv)
+s = handle_human_format(s)
 elem_list = balance_equation(s)
 print("Reduced form:       " + get_balanced_str(elem_list))
 eq_degree = get_eq_degree(elem_list)
