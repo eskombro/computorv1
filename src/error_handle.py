@@ -23,7 +23,8 @@ def exit_error(erno):
 				"Nothing after '=' symbol",
 				"Worng characters in the equation",
 				"This equation degree is different than 0, 1 or 2",
-				"This equation is wrong! There's no solution!"]
+				"This equation is wrong! There's no solution!",
+				"Can't divide by zero! Sorry!"]
 	print(err_str[erno])
 	exit (1)
 
