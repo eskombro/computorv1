@@ -1,3 +1,5 @@
+from src.error_handle import exit_error
+
 def get_coef(par):
 	chars = "0123456789."
 	coef = 0
@@ -7,7 +9,10 @@ def get_coef(par):
 		pos = chars.find(par[i])
 		if (pos == -1):
 			coef = float(par[0 : i])
-			degree = int(par[len(par) - 1])
+			tmp = par[par.find('^') + 1 : len(par)]
+			if (float(tmp) % 1 != 0 or int(tmp) > 2 or int(tmp) < 0):
+				exit_error(6)
+			degree = int(tmp)
 			break
 	return (coef, degree)
 
@@ -21,6 +26,8 @@ def handle_elems(s, is_left):
 		s = s[1:len(s)]
 		pos_sign = s.find('+')
 		temp = s.find('-')
+		if (temp != -1 and s[temp - 1] == '^'):
+			temp = -1
 		if (temp != -1 and (temp < pos_sign or pos_sign == -1)):
 			pos_sign = temp
 		if (pos_sign == -1):
@@ -64,5 +71,7 @@ def get_balanced_str(elem_list):
 			else:
 				str_balanced += str(int(elem_list[i]))
 			str_balanced += " * X^" + str(i) + " "
+	if (str_balanced == ""):
+		str_balanced += "0 "
 	str_balanced += "= 0"
 	return (str_balanced)

@@ -15,13 +15,15 @@ def check_wrong_chars(s):
 	return (0)
 
 def exit_error(erno):
-	print("Error:")
+	print("Error: " + str(erno))
 	err_str = [	"Worng number of parameters. Expected 1.",
 				"Parameter 1 is not an equation",
 				"Equation format is wrong: several '=' symbols",
 				"Nothing before '=' symbol",
 				"Nothing after '=' symbol",
-				"Worng characters in the equation"]
+				"Worng characters in the equation",
+				"This equation degree is different than 0, 1 or 2",
+				"This equation is wrong! There's no solution!"]
 	print(err_str[erno])
 	exit (1)
 
