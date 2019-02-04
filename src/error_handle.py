@@ -1,3 +1,9 @@
+# @Author: Samuel Jimenez <sjimenez>
+# @Date:\t2019-02-02T20:24:26+01:00
+# @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
+# @Last modified by:   sjimenez
+# @Last modified time: 2019-02-04T03:49:00+01:00
+
 def epur_str(s):
 	i = 0
 	while (i < len(s)):
@@ -15,16 +21,16 @@ def check_wrong_chars(s):
 	return (0)
 
 def exit_error(erno):
-	print("Error: " + str(erno))
-	err_str = [	"Worng number of parameters. Expected 1.",
-				"Parameter 1 is not an equation",
-				"Equation format is wrong: several '=' symbols",
-				"Nothing before '=' symbol",
-				"Nothing after '=' symbol",
-				"Worng characters in the equation",
-				"This equation degree is different than 0, 1 or 2",
-				"This equation is wrong! There's no solution!",
-				"Can't divide by zero! Sorry!"]
+	print("\tError: " + str(erno))
+	err_str = [	"\tWorng number of parameters. Expected 1.",
+				"\tParameter 1 is not an equation",
+				"\tEquation format is wrong: several '=' symbols",
+				"\tNothing before '=' symbol",
+				"\tNothing after '=' symbol",
+				"\tWorng characters in the equation",
+				"\tThis equation degree is different than 0, 1 or 2",
+				"\tThis equation is wrong! There's no solution!",
+				"\tCan't divide by zero! Sorry!"]
 	print(err_str[erno])
 	exit (1)
 
