@@ -2,7 +2,7 @@
 # @Date:   2019-02-02T20:38:36+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-04T03:51:51+01:00
+# @Last modified time: 2019-02-04T04:00:31+01:00
 
 from src.error_handle import exit_error
 
@@ -78,7 +78,7 @@ def get_balanced_str(elem_list):
 				str_balanced += str(int(elem_list[i]))
 			str_balanced += "*X^" + str(i) + "  "
 	if (str_balanced == ""):
-		str_balanced += "0 "
+		str_balanced += "0  "
 	str_balanced += "=  0"
 	return (str_balanced)
 

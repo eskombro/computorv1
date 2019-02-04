@@ -2,7 +2,7 @@
 # @Date:   2019-02-03T00:19:44+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-04T03:48:24+01:00
+# @Last modified time: 2019-02-04T04:03:06+01:00
 
 from src.error_handle import exit_error
 
@@ -52,7 +52,7 @@ def solve_deg2(list, solution_nbr):
 		root = sq_root((list[1] * list[1]) - (4 * list[2] * list[0]))
 		x = ((list[1] * -1) + root) / (2 * list[2])
 		x_neg = ((list[1] * -1) - root) / (2 * list[2])
-		return (str(x) + ", " + str(x_neg))
+		return ("X = " + str(x) + ", X = " + str(x_neg))
 
 def solve_eq(eq_degree, elem_list, sol_nbr):
 	if (eq_degree == 0):
@@ -63,7 +63,7 @@ def solve_eq(eq_degree, elem_list, sol_nbr):
 	elif (eq_degree == 1):
 		print ("\t\033[93mThere is only one solution to this equation.\033[0m")
 		print("\tThe answer is:")
-		print("\t" + solve_deg1(elem_list) + "\n")
+		print("\tX = " + solve_deg1(elem_list) + "\n")
 	else:
 		print("\t\033[93mThis is a quadratic equation.\033[0m")
 		print("\t\033[93mPossible real solutions: " + str(sol_nbr) + "\033[0m")
