@@ -2,9 +2,19 @@
 # @Date:   2019-02-02T20:38:36+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-04T04:00:31+01:00
+# @Last modified time: 2019-02-05T00:07:44+01:00
 
 from src.error_handle import exit_error
+
+def check_par_format(s):
+	# i = 0
+	# print("Checking par: " + s)
+	# if ("0123456789".find(s[i]) == -1):
+	# 	exit_error(9)
+	# while ("0123456789".find(s[i]) != -1):
+	# 	i += 1
+	# print(s[i])
+	pass
 
 def get_coef(par):
 	chars = "0123456789."
@@ -12,6 +22,7 @@ def get_coef(par):
 	degree = 0
 
 	for i in range(0, len(par)):
+		check_par_format(par)
 		pos = chars.find(par[i])
 		if (pos == -1):
 			coef = float(par[0: i])
@@ -82,13 +93,38 @@ def get_balanced_str(elem_list):
 	str_balanced += "=  0"
 	return (str_balanced)
 
-def handle_human_format(s):
+def handle_human_format(s, verbose):
 	i = 0
 
+	print("\tFormat steps:") if verbose else 0
 	while (i < len(s)):
-		if (s[i] == 'X'):
-			if (i == 0 or s[i - 1] != '*'):
-				s = s[0: i] + "1*" + s[i: len(s)]
+		if (i == 0 and verbose):
+			print("\t" + s)
+		if (s[i] == '*'):
+
+			if (i == 0 or "0123456789.".find(s[i - 1]) == -1 ):
+				s = s[0: i] + "1" + s[i: len(s)]
+				i = -1
+			elif (i == len(s) - 1 or s[i + 1] != 'X'):
+				s = s[0: i] + s[i + 1: len(s)]
+				i = -1
+		elif (s[i] == '.'):
+			if (i == 0 or "0123456789".find(s[i - 1]) == -1):
+				s = s[0: i] + "0" + s[i: len(s)]
+				i = -1
+		elif (i < len(s) - 1 and s[i + 1] == 'X'):
+			if ("0123456789".find(s[i]) != -1):
+				s = s[0: i + 1] + "*" + s[i + 1: len(s)]
+				i = -1
+		elif (s[i] == 'X'):
+			if (i < len(s) - 1 and "0123456789".find(s[i + 1]) != -1):
+				s = s[0: i + 1] + "^" + s[i +1: len(s)]
+				i = -1
+			elif (i == 0 or s[i - 1] != '*'):
+				if (i == 0 or "0123456789".find(s[i]) != -1 or s[i - 1] == '='):
+					s = s[0: i] + "1*" + s[i: len(s)]
+				else :
+					s = s[0: i] + "*" + s[i: len(s)]
 				i = -1
 			elif (i == len(s) - 1 or s[i + 1] != '^'):
 				s = s[0: i + 1] + "^1" + s[i + 1: len(s)]
@@ -100,12 +136,22 @@ def handle_human_format(s):
 				prev = True
 				while (i < len(s) - 1 and "0123456789.".find(s[i]) != -1):
 					i += 1
-				if (i == len(s) or s[i] != '*'):
+				if (s[i - 1] == '.'):
+					s = s[0: i] + "0" + s[i: len(s)]
+					i = -1
+				elif (i == len(s) or s[i] != '*'):
 					if (i != len(s) - 1):
 						i -= 1
 					next = True
 				if (prev and next):
-					s = s[0: i + 1] + "*X^0" + s[i + 1: len(s)]
-					i = -1
+					if(i == len(s) - 1 or "+-=".find(s[i + 1]) != -1):
+						s = s[0: i + 1] + "*X^0" + s[i + 1: len(s)]
+						i = -1
+					elif (s[i + 1] == '.'):
+						if(i < len(s) - 1 and "0123456789".find(s[i + 2]) == -1):
+							s = s[0: i + 2] + "0" + s[i + 2: len(s)]
+							i = -1
+				i -= 1
 		i += 1
+	print("\n") if verbose else 0
 	return (s)

@@ -2,7 +2,7 @@
 # @Date:\t2019-02-02T20:24:26+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-04T03:49:00+01:00
+# @Last modified time: 2019-02-04T19:35:48+01:00
 
 def epur_str(s):
 	i = 0
@@ -30,7 +30,8 @@ def exit_error(erno):
 				"\tWorng characters in the equation",
 				"\tThis equation degree is different than 0, 1 or 2",
 				"\tThis equation is wrong! There's no solution!",
-				"\tCan't divide by zero! Sorry!"]
+				"\tCan't divide by zero! Sorry!",
+				"\tParameter format is wrong"]
 	print(err_str[erno])
 	exit (1)
 
