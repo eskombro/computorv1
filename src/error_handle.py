@@ -2,7 +2,7 @@
 # @Date:\t2019-02-02T20:24:26+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-05T02:07:00+01:00
+# @Last modified time: 2019-02-05T19:14:52+01:00
 
 def epur_str(s):
 	i = 0
@@ -21,18 +21,21 @@ def check_wrong_chars(s):
 	return (0)
 
 def exit_error(erno):
-	print("\tError: " + str(erno)) if erno != 0 else 0
-	err_str = [	"\tUsage: python computor.py [-v] arg",
-				"\tParameter 1 is not an equation",
-				"\tEquation format is wrong: several '=' symbols",
-				"\tNothing before '=' symbol",
-				"\tNothing after '=' symbol",
-				"\tWorng characters in the equation",
-				"\tThis equation degree is different than 0, 1 or 2",
-				"\tThis equation is wrong! There's no solution!",
-				"\tCan't divide by zero! Sorry!",
-				"\tParameter format is wrong"]
-	print(err_str[erno])
+	var = "\t\033[91m"
+	if (erno != 0):
+		var += "Error " + str(erno) + ": ("
+	err_str = [	"Usage: python computor.py [-v] arg)",
+				"Parameter 1 is not an equation)",
+				"Equation format is wrong: several '=' symbols)",
+				"Nothing before '=' symbol)",
+				"Nothing after '=' symbol)",
+				"Worng characters in the equation)",
+				"This equation degree is a rational number)",
+				"This equation is wrong! There's no solution!)",
+				"Can't divide by zero! Sorry!)",
+				"Parameter format is wrong)",
+				"This equation degree is higher than 2 or smaller than 0)"]
+	print(var + err_str[erno] + "\033[0m\n")
 	exit (1)
 
 def test_errors(argv):

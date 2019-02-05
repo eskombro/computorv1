@@ -2,7 +2,7 @@
 # @Date:   2019-02-05T00:11:56+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-05T02:07:49+01:00
+# @Last modified time: 2019-02-05T02:08:26+01:00
 
 def is_num(c):
 	if ("0123456789".find(c) == -1):

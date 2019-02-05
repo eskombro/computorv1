@@ -2,7 +2,7 @@
 # @Date:   2019-02-02T20:38:36+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-05T01:35:03+01:00
+# @Last modified time: 2019-02-05T19:06:40+01:00
 
 from src.error_handle import exit_error
 from src.human_format import is_num
@@ -17,10 +17,16 @@ def check_par_format(s):
 		i += 1
 	while (is_num(s[i])):
 		i += 1
-	if (s[i] != '*' or s[i + 1] != X):
+	if (s[i] != '*' or s[i + 1] != 'X'):
 		exit_error(9)
-	if (s[i + 2] != '^' or not is_num(s[i + 3])):
+	if (s[i + 2] != '^'):
 		exit_error(9)
+	i += 3
+	while (i < len(s)):
+		if (is_num(s[i]) or s[i] == '.'):
+			if (s[i] == '.' and (i == len(s) - 1 or not is_num(s[i + 1]))):
+				exit_error(9)
+		i += 1
 
 def get_coef(par):
 	chars = "0123456789."
@@ -30,13 +36,14 @@ def get_coef(par):
 	for i in range(0, len(par)):
 		pos = chars.find(par[i])
 		if (pos == -1):
+			check_par_format(par)
 			try:
 				coef = float(par[0: i])
 				tmp = par[par.find('^') + 1: len(par)]
 				float(tmp)
 			except ValueError:
 				exit_error(9)
-			if (float(tmp) % 1 != 0 or int(tmp) > 2 or int(tmp) < 0):
+			if (float(tmp) % 1 != 0):
 				exit_error(6)
 			degree = int(tmp)
 			break
@@ -63,6 +70,9 @@ def handle_elems(s, is_left):
 			par = s[0: pos_sign]
 			s = s[pos_sign: len(s)]
 		coef, degree = get_coef(par)
+		if (degree > 2 or degree < 0):
+			print("\t\033[92mPolinomial degree:\033[0m  " + str(degree))
+			exit_error(10)
 		if (not is_left):
 			coef *= -1
 		elem_list[degree] += coef * neg
