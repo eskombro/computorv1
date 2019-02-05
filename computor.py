@@ -2,7 +2,7 @@
 # @Date:   2019-02-02T20:24:15+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-05T02:04:50+01:00
+# @Last modified time: 2019-02-05T19:22:59+01:00
 
 import sys
 
@@ -31,5 +31,5 @@ elem_list = balance_eq(s)
 print("\t\033[92mReduced form:\033[0m       " + get_balanced_str(elem_list))
 eq_degree = get_eq_degree(elem_list)
 print("\t\033[92mPolinomial degree:\033[0m  " + str(eq_degree))
-solution_nbr = get_solution_nbr(elem_list)
-solve_eq(eq_degree, elem_list, solution_nbr)
+solution_nbr, discrim = get_solution_nbr(elem_list)
+solve_eq(eq_degree, elem_list, solution_nbr, discrim)
