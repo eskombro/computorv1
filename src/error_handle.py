@@ -2,7 +2,7 @@
 # @Date:\t2019-02-02T20:24:26+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-05T19:14:52+01:00
+# @Last modified time: 2019-02-05T23:32:14+01:00
 
 def epur_str(s):
 	i = 0
@@ -24,7 +24,7 @@ def exit_error(erno):
 	var = "\t\033[91m"
 	if (erno != 0):
 		var += "Error " + str(erno) + ": ("
-	err_str = [	"Usage: python computor.py [-v] arg)",
+	err_str = [	"Usage: python computor.py [ -v || -f ] arg",
 				"Parameter 1 is not an equation)",
 				"Equation format is wrong: several '=' symbols)",
 				"Nothing before '=' symbol)",
