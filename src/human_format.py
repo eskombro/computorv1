@@ -2,7 +2,7 @@
 # @Date:   2019-02-05T00:11:56+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-13T19:26:45+01:00
+# @Last modified time: 2019-02-13T23:33:50+01:00
 
 def is_num(c):
 	if ("0123456789".find(c) == -1):
@@ -24,7 +24,6 @@ def handle_star(s, i):
 	return (s, i)
 
 def handle_x(s, i):
-	# print("--- " + str(i) + "\nStart: " + s)
 	if (i < len(s) - 1 and is_num(s[i + 1])):
 		s = s[0: i + 1] + "^" + s[i +1: len(s)]
 		i = -1
@@ -37,7 +36,6 @@ def handle_x(s, i):
 	elif (i == len(s) - 1 or s[i + 1] != '^'):
 		s = s[0: i + 1] + "^1" + s[i + 1: len(s)]
 		i = -1
-	# print("End:   " + s + "\n---")
 	return (s, i)
 
 def handle_num(s, i):

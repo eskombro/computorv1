@@ -2,7 +2,7 @@
 # @Date:   2019-02-03T00:19:44+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-05T23:55:56+01:00
+# @Last modified time: 2019-02-13T23:33:18+01:00
 
 from src.error_handle import exit_error
 from decimal import *
@@ -65,6 +65,9 @@ def convert_fraction(s, fractions):
 					res += "(" + str(int(nom)) + "/" + str(int(den)) + ")"
 					break
 				den += Decimal(1.0)
+				if (calc < decimal):
+					den = Decimal(101)
+			den = Decimal(1.0)
 			nom += Decimal(1.0)
 	if (not found):
 		return (s)

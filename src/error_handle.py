@@ -2,7 +2,7 @@
 # @Date:\t2019-02-02T20:24:26+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-13T18:30:45+01:00
+# @Last modified time: 2019-02-13T23:33:50+01:00
 
 def epur_str(s):
 	i = 0
