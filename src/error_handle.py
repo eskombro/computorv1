@@ -2,7 +2,7 @@
 # @Date:\t2019-02-02T20:24:26+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-05T23:32:14+01:00
+# @Last modified time: 2019-02-13T18:30:45+01:00
 
 def epur_str(s):
 	i = 0
@@ -37,6 +37,23 @@ def exit_error(erno):
 				"This equation degree is higher than 2 or smaller than 0)"]
 	print(var + err_str[erno] + "\033[0m\n")
 	exit (1)
+
+def handle_args(args):
+	verbose = 0
+	fractions = 0
+	if (len(args) > 4):
+		exit_error(0)
+	elif (len(args) > 2):
+		if (args[1] != "-v" and args[1] != "-f"):
+			exit_error(0)
+		if (len(args) == 4 and args[2] != "-v" and args[2] != "-f"):
+			exit_error(0)
+		if (args[1] == "-v" or args[2] == "-v"):
+			verbose = 1
+		if (args[1] == "-f" or args[2] == "-f"):
+			fractions = 1
+		args = [args[0], args[len(args) - 1]]
+	return (args, verbose, fractions)
 
 def test_errors(argv):
 	if (len(argv) != 2):
