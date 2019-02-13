@@ -2,7 +2,7 @@
 # @Date:   2019-02-02T20:38:36+01:00
 # @Email:  sjimenezre@gmail.com | sjimenez@student.42.fr
 # @Last modified by:   sjimenez
-# @Last modified time: 2019-02-05T19:06:40+01:00
+# @Last modified time: 2019-02-13T23:45:14+01:00
 
 from src.error_handle import exit_error
 from src.human_format import is_num
@@ -101,6 +101,8 @@ def get_balanced_str(elem_list):
 	for i in range(0, 3):
 		if (elem_list[i]):
 			if (i != 0 and elem_list[i] > 0.0 and elem_list[i - 1] != 0.0):
+				str_balanced += "+ "
+			if (i == 2 and elem_list[1] == 0 and elem_list[0] != 0):
 				str_balanced += "+ "
 			if (elem_list[i] % 1 != 0):
 				str_balanced += str(elem_list[i])
